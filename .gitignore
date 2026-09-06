@@ -48,3 +48,12 @@ uploads/
 Thumbs.db
 
 src/main/resources/application.properties
+
+# Локальные конфиги с паролями
+application-local.properties
+application-railway.properties
+.env
+.env.local
+
+# Загруженные файлы
+uploads/
