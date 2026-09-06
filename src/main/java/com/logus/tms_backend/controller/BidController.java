@@ -60,12 +60,14 @@ public class BidController {
      * PUT /api/bids/{bidId}/accept – принятие предложения заказчиком
      */
     @PutMapping("/{bidId}/accept")
+    @Transactional // Добавляем транзакцию для безопасности
     public ResponseEntity<Order> acceptBid(@PathVariable Long bidId) {
-        // Находим предложение (теперь оно загружается с JOIN FETCH)
+        // Находим предложение
         Bid bid = bidService.getBidById(bidId);
 
-        // Передаем orderId и bidId в сервис
-        Order updatedOrder = orderService.assignCarrier(bid.getOrder().getId(), bidId);
+        // ✅ ИСПРАВЛЕНО: передаем orderId и carrierId (а не bidId)
+        Order updatedOrder = orderService.assignCarrier(bid.getOrder().getId(), bid.getCarrier().getId());
+
         return ResponseEntity.ok(updatedOrder);
     }
 

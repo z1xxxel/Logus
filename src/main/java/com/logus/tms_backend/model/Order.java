@@ -40,7 +40,6 @@ public class Order {
     @Column(nullable = false)
     private OrderStatus status = OrderStatus.NEW;
 
-    // 🆕 Категория груза
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     private CargoCategory category;
@@ -52,4 +51,8 @@ public class Order {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "carrier_id")
     private User carrier;
+
+    // 🆕 Поле для ML-предсказания
+    @Column(precision = 10, scale = 2)
+    private BigDecimal predictedPrice;
 }

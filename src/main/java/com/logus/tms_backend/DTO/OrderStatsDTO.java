@@ -1,12 +1,17 @@
 package com.logus.tms_backend.DTO;
 
-import java.math.BigDecimal;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public record OrderStatsDTO(
-        Long totalOrders,           // Всего заказов
-        Long completedOrders,       // Завершенных заказов
-        Long activeOrders,          // Активных заказов
-        Long cancelledOrders,       // Отмененных заказов
-        BigDecimal totalSpent,      // Общая сумма (для заказчика) или заработано (для перевозчика)
-        BigDecimal averageOrderValue // Средний чек
-) {}
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class OrderStatsDTO {
+    private Long totalOrders;
+    private Long completedOrders;
+    private Long activeOrders;
+    private Long cancelledOrders;
+}

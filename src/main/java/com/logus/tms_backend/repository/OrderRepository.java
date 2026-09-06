@@ -39,6 +39,10 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     @Query("SELECT o FROM Order o LEFT JOIN FETCH o.customer LEFT JOIN FETCH o.carrier WHERE o.carrier = :carrier AND o.status IN ('COMPLETED', 'CANCELLED') ORDER BY o.deadline DESC")
     List<Order> findHistoryByCarrier(@Param("carrier") User carrier);
 
+    List<Order> findByCustomerId(Long customerId);
+
+    List<Order> findByCarrierId(Long carrierId);
+
     // В OrderRepository.java — обновляем запросы:
 
     @Query("SELECT o FROM Order o LEFT JOIN FETCH o.customer LEFT JOIN FETCH o.carrier " +

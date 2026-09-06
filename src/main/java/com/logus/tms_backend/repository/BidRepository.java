@@ -20,6 +20,7 @@ public interface BidRepository extends JpaRepository<Bid, Long> {
 
     List<Bid> findByOrderId(Long orderId);
 
+
     // 🆕 Получить все предложения конкретного перевозчика с загрузкой связанных данных
     @Query("SELECT b FROM Bid b LEFT JOIN FETCH b.order LEFT JOIN FETCH b.carrier WHERE b.carrier = :carrier")
     List<Bid> findByCarrierWithDetails(@Param("carrier") User carrier);

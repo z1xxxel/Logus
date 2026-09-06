@@ -9,9 +9,6 @@ public class OrderFilterDTO {
     private String toCity;
     private BigDecimal minWeight;
     private BigDecimal maxWeight;
-    private Integer maxEstimatedDays;
     private Boolean urgent;
-
-    // 🆕 Фильтр по категории
     private Long categoryId;
 }
